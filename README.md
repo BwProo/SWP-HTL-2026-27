@@ -1,34 +1,29 @@
 # 🚀 SWP School Projects (2026/2027)
 
-Welcome to my **Softwareentwicklung und -praxis (SWP)** repository! This space contains all my projects, assignments, and practical work developed during the school year at HTL.
+Welcome to my **Softwareentwicklung und -praxis (SWP)** repository at HTL! This repository will serve as my workspace for all upcoming projects, assignments, and practical coding tasks throughout the school year.
 
 ---
 
-## 📂 Project Structure
+## 📂 Upcoming Projects
 
-Here is an overview of what you will find in this repository:
-
-| Folder / Project | Description | Tech Stack | Status |
+| Project / Topic | Description | Tech Stack | Status |
 | :--- | :--- | :--- | :--- |
-| `project-1/` | *Short description of the first project* | `Java`, `Spring` | 🟡 In Progress |
-| `project-2/` | *Short description of the second project* | `Python`, `Flask` | 🟢 Completed |
-| `exercises/` | *Smaller weekly tasks and labs* | Various | 🔄 Ongoing |
+| *Coming Soon* | *First projects will be added here soon...* | `-` | ⏳ Planned |
 
 ---
 
 ## 🛠️ Technologies & Tools
 
-Throughout this academic year, I am working with the following technologies:
-* **Languages:** Java, Python, JavaScript, SQL
-* **Frameworks:** Spring Boot, Node.js
-* **Tools:** Git, GitHub, VS Code, IntelliJ IDEA, Docker
+During this academic year, I will be working with:
+* **Languages:** Java, Python, SQL, etc.
+* **Tools:** Git, GitHub, IDEs (IntelliJ, VS Code, etc.)
 
 ---
 
-## ⚙️ Getting Started
+## 👤 Author
 
-If you want to run any of the projects locally, follow these general steps:
+* **Name:** BwProo
+* **School:** HTL
 
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/YOUR-USERNAME/SWP-HTL-2026-27.git](https://github.com/YOUR-USERNAME/SWP-HTL-2026-27.git)
+---
+*⭐ Stay tuned for updates as the school year progresses!*
