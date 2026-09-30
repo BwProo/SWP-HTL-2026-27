@@ -31,6 +31,7 @@ namespace KonsolenApp
                 string umgedreht = new string(charArray);
 
                 Console.WriteLine($"Ausgabe: {umgedreht}");
+                Console.ReadKey();
             }
         }
     }
