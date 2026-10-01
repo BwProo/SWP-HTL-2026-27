@@ -25,12 +25,27 @@ namespace KonsolenApp
 
             if (eingabe != null)
             {
-                // String in ein char-Array umwandeln, umkehren und wieder zu einem String zusammenfügen
-                char[] charArray = eingabe.ToCharArray();
-                Array.Reverse(charArray);
-                string umgedreht = new string(charArray);
+                // 1. Versuche, die Eingabe als Ganzzahl (int) zu interpretieren
+                if (int.TryParse(eingabe, out int intWert))
+                {
+                    Console.WriteLine($"Erkannt: Integer (Ganzzahl) -> {intWert}");
+                }
+                // 2. Versuche, die Eingabe als Kommazahl (double) zu interpretieren
+                else if (double.TryParse(eingabe, out double doubleWert))
+                {
+                    Console.WriteLine($"Erkannt: Rationale Zahl (Double) -> {doubleWert}");
+                }
+                // 3. Versuche, die Eingabe als Wahrheitswert (bool) zu interpretieren
+                else if (bool.TryParse(eingabe, out bool boolWert))
+                {
+                    Console.WriteLine($"Erkannt: Boolean (Wahrheitswert) -> {boolWert}");
+                }
+                // 4. Wenn nichts davon zutrifft, bleibt es ein String
+                else
+                {
+                    Console.WriteLine($"Erkannt: Regulärer String (Text) -> {eingabe}");
+                }
 
-                Console.WriteLine($"Ausgabe: {umgedreht}");
                 Console.ReadKey();
             }
         }
