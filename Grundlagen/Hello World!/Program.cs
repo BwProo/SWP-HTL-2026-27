@@ -3,30 +3,28 @@ using System.Linq;
 
 namespace KonsolenApp
 {
-
     class Program
     {
         static void Main(string[] args)
         {
             bool programmLäuft = true;
 
-            // Eine Schleife, damit das Menü nach jeder Aktion wiederkommt
             while (programmLäuft)
             {
-                Console.Clear(); // Löscht den Bildschirm für eine saubere Ansicht
+                Console.Clear();
                 Console.WriteLine("============================");
                 Console.WriteLine("       HAUPTMENÜ           ");
                 Console.WriteLine("============================");
                 Console.WriteLine("1 - String umkehren");
                 Console.WriteLine("2 - Datentyp erkennen");
-                Console.WriteLine("3 - Hello SWP!");
+                Console.WriteLine("3 - Datentyp erkennen ohne if true");
+                Console.WriteLine("4 - Hello SWP!");
                 Console.WriteLine("0 - Programm beenden");
                 Console.Write("\nBitte wähle eine Option: ");
 
-                string auswahl = Console.ReadLine();
-                Console.WriteLine(); // Leerzeile für den Abstand
+                string? auswahl = Console.ReadLine();
+                Console.WriteLine();
 
-                // Hier wird ausgewertet, welche Zahl der Benutzer eingegeben hat
                 switch (auswahl)
                 {
                     case "1":
@@ -36,19 +34,20 @@ namespace KonsolenApp
                         DatentypErkennen();
                         break;
                     case "3":
+                        DatentypErkennenoiftrue();
+                        break;
+                    case "4":
                         HelloWorld();
                         break;
                     case "0":
                         programmLäuft = false;
                         Console.WriteLine("Programm wird beendet. Auf Wiedersehen!");
                         break;
-                    
                     default:
                         Console.WriteLine("Ungültige Auswahl! Bitte eine Zahl aus dem Menü wählen.");
                         break;
                 }
 
-                // Wenn das Programm nicht beendet wurde, warten wir kurz, bis der Nutzer weiterwill
                 if (programmLäuft)
                 {
                     Console.WriteLine("\nDrücke eine beliebige Taste, um ins Menü zurückzukehren...");
@@ -57,15 +56,13 @@ namespace KonsolenApp
             }
         }
 
-        // --- HIER SIND DEINE EINZELNEN FUNKTIONEN ---
+        // --- FUNKTIONEN ---
 
-        // Funktion 1: String umkehren (aus der ersten Aufgabe)
         static void StringUmkehren()
-
         {
             Console.WriteLine("--- Modus: String umkehren ---");
             Console.Write("Bitte einen String eingeben: ");
-            string eingabe = Console.ReadLine();
+            string? eingabe = Console.ReadLine();
 
             if (!string.IsNullOrEmpty(eingabe))
             {
@@ -77,13 +74,11 @@ namespace KonsolenApp
             }
         }
 
-        // Funktion 2: Datentyp erkennen (aus der aktuellen Aufgabe)
         static void DatentypErkennen()
-
         {
             Console.WriteLine("--- Modus: Datentyp erkennen ---");
             Console.Write("Bitte einen Wert eingeben: ");
-            string eingabe = Console.ReadLine();
+            string? eingabe = Console.ReadLine();
 
             if (eingabe != null)
             {
@@ -106,11 +101,31 @@ namespace KonsolenApp
             }
         }
 
-            static void HelloWorld()
+        static void HelloWorld()
+        {
+            Console.WriteLine("Hello, SWP");
+            Console.ReadKey();
+        }
 
+        // Menüpunkt 3: Extrem einfach und kompakt mit einem switch-Ausdruck
+        static void DatentypErkennenoiftrue()
+        {
+            Console.WriteLine("--- Modus: Datentyp erkennen ---");
+            Console.Write("Bitte einen Wert eingeben: ");
+            string? eingabe = Console.ReadLine();
+
+            if (eingabe != null)
             {
-             Console.WriteLine("Hello, SWP");
-             Console.ReadKey();
+                string ausgabe = eingabe switch
+                {
+                    _ when int.TryParse(eingabe, out int i) => $"Erkannt: Integer (Ganzzahl) -> {i}",
+                    _ when double.TryParse(eingabe, out double d) => $"Erkannt: Rationale Zahl (Double) -> {d}",
+                    _ when bool.TryParse(eingabe, out bool b) => $"Erkannt: Boolean (Wahrheitswert) -> {b}",
+                    _ => $"Erkannt: Regulärer String (Text) -> {eingabe}"
+                };
+
+                Console.WriteLine(ausgabe);
+            }
         }
     }
 }
