@@ -3,35 +3,128 @@ using System.Linq;
 
 namespace KonsolenApp
 {
-    /* 
-     * PR-Kommentar / Theoriefragen:
-     * 
-     * 1. Wozu benötigt C# überhaupt Datentypen?
-     * - Speicherreservierung: Damit der Computer weiß, wie viel Arbeitsspeicher (RAM) reserviert werden muss.
-     * - Typsicherheit: Verhindert ungültige Operationen (z. B. Rechnen mit Text).
-     * - Klarheit: Macht den Code verständlicher.
-     * 
-     * 2. Welche Datentypen kennt C#?
-     * - Wertedypen (Value Types): z. B. int, double, bool, char, decimal
-     * - Verweistypen (Reference Types): z. B. string, object, Arrays, Klassen
-     */
-
     class Program
     {
         static void Main(string[] args)
         {
-            Console.Write("Bitte einen String eingeben: ");
-            string eingabe = Console.ReadLine();
+            bool programmLäuft = true;
 
-            if (eingabe != null)
+            while (programmLäuft)
             {
-                // String in ein char-Array umwandeln, umkehren und wieder zu einem String zusammenfügen
+                Console.Clear();
+                Console.WriteLine("============================");
+                Console.WriteLine("       HAUPTMENÜ           ");
+                Console.WriteLine("============================");
+                Console.WriteLine("1 - String umkehren");
+                Console.WriteLine("2 - Datentyp erkennen");
+                Console.WriteLine("3 - Datentyp erkennen ohne if true");
+                Console.WriteLine("4 - Hello SWP!");
+                Console.WriteLine("0 - Programm beenden");
+                Console.Write("\nBitte wähle eine Option: ");
+
+                string? auswahl = Console.ReadLine();
+                Console.WriteLine();
+
+                switch (auswahl)
+                {
+                    case "1":
+                        StringUmkehren();
+                        break;
+                    case "2":
+                        DatentypErkennen();
+                        break;
+                    case "3":
+                        DatentypErkennenoiftrue();
+                        break;
+                    case "4":
+                        HelloWorld();
+                        break;
+                    case "0":
+                        programmLäuft = false;
+                        Console.WriteLine("Programm wird beendet. Auf Wiedersehen!");
+                        break;
+                    default:
+                        Console.WriteLine("Ungültige Auswahl! Bitte eine Zahl aus dem Menü wählen.");
+                        break;
+                }
+
+                if (programmLäuft)
+                {
+                    Console.WriteLine("\nDrücke eine beliebige Taste, um ins Menü zurückzukehren...");
+                    Console.ReadKey();
+                }
+            }
+        }
+
+        // --- FUNKTIONEN ---
+
+        static void StringUmkehren()
+        {
+            Console.WriteLine("--- Modus: String umkehren ---");
+            Console.Write("Bitte einen String eingeben: ");
+            string? eingabe = Console.ReadLine();
+
+            if (!string.IsNullOrEmpty(eingabe))
+            {
                 char[] charArray = eingabe.ToCharArray();
                 Array.Reverse(charArray);
                 string umgedreht = new string(charArray);
 
                 Console.WriteLine($"Ausgabe: {umgedreht}");
-                Console.ReadKey();
+            }
+        }
+
+        static void DatentypErkennen()
+        {
+            Console.WriteLine("--- Modus: Datentyp erkennen ---");
+            Console.Write("Bitte einen Wert eingeben: ");
+            string? eingabe = Console.ReadLine();
+
+            if (eingabe != null)
+            {
+                if (int.TryParse(eingabe, out int intWert))
+                {
+                    Console.WriteLine($"Erkannt: Integer (Ganzzahl) -> {intWert}");
+                }
+                else if (double.TryParse(eingabe, out double doubleWert))
+                {
+                    Console.WriteLine($"Erkannt: Rationale Zahl (Double) -> {doubleWert}");
+                }
+                else if (bool.TryParse(eingabe, out bool boolWert))
+                {
+                    Console.WriteLine($"Erkannt: Boolean (Wahrheitswert) -> {boolWert}");
+                }
+                else
+                {
+                    Console.WriteLine($"Erkannt: Regulärer String (Text) -> {eingabe}");
+                }
+            }
+        }
+
+        static void HelloWorld()
+        {
+            Console.WriteLine("Hello, SWP");
+            Console.ReadKey();
+        }
+
+        // Menüpunkt 3: Extrem einfach und kompakt mit einem switch-Ausdruck
+        static void DatentypErkennenoiftrue()
+        {
+            Console.WriteLine("--- Modus: Datentyp erkennen ---");
+            Console.Write("Bitte einen Wert eingeben: ");
+            string? eingabe = Console.ReadLine();
+
+            if (eingabe != null)
+            {
+                string ausgabe = eingabe switch
+                {
+                    _ when int.TryParse(eingabe, out int i) => $"Erkannt: Integer (Ganzzahl) -> {i}",
+                    _ when double.TryParse(eingabe, out double d) => $"Erkannt: Rationale Zahl (Double) -> {d}",
+                    _ when bool.TryParse(eingabe, out bool b) => $"Erkannt: Boolean (Wahrheitswert) -> {b}",
+                    _ => $"Erkannt: Regulärer String (Text) -> {eingabe}"
+                };
+
+                Console.WriteLine(ausgabe);
             }
         }
     }
