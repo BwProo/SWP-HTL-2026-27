@@ -12,13 +12,14 @@ namespace KonsolenApp
             while (programmLäuft)
             {
                 Console.Clear();
-                Console.WriteLine("============================");
-                Console.WriteLine("       HAUPTMENÜ           ");
-                Console.WriteLine("============================");
+                Console.WriteLine("=================================");
+                Console.WriteLine("           HAUPTMENÜ             ");
+                Console.WriteLine("=================================");
                 Console.WriteLine("1 - String umkehren");
                 Console.WriteLine("2 - Datentyp erkennen");
                 Console.WriteLine("3 - Datentyp erkennen ohne if true");
                 Console.WriteLine("4 - Hello SWP!");
+                Console.WriteLine("5 - Mathematische Operationen");
                 Console.WriteLine("0 - Programm beenden");
                 Console.Write("\nBitte wähle eine Option: ");
 
@@ -38,6 +39,9 @@ namespace KonsolenApp
                         break;
                     case "4":
                         HelloWorld();
+                        break;
+                    case "5":
+                        MathematischeOperationen();
                         break;
                     case "0":
                         programmLäuft = false;
@@ -127,5 +131,67 @@ namespace KonsolenApp
                 Console.WriteLine(ausgabe);
             }
         }
+
+        static void MathematischeOperationen()
+        {
+            Console.WriteLine("=================================");
+            Console.WriteLine(" Modus: Mathematische Operationen");
+            Console.WriteLine("=================================");
+            Console.WriteLine("1 - Quadrat");
+            Console.WriteLine("2 - Quadratwurzel");
+            Console.WriteLine("3 - Fakultät");
+            Console.Write("Bitte wähle eine Operation (1-3): ");
+
+            string? eingabe = Console.ReadLine();
+
+            if (eingabe == "1" || eingabe == "2" || eingabe == "3")
+            {
+                Console.Write("Bitte gib eine Zahl ein: ");
+
+                if (double.TryParse(Console.ReadLine(), out double zahl))
+                {
+                    string ausgabe = eingabe switch
+                    {
+                        "1" => $"Ergebnis (Quadrat): {zahl * zahl}",
+
+                        "2" => zahl >= 0
+                            ? $"Ergebnis (Wurzel): {Math.Sqrt(zahl)}"
+                            : "Fehler: Keine Wurzel aus negativen Zahlen möglich!",
+
+                        "3" => (zahl >= 0 && zahl == Math.Floor(zahl))
+                            ? $"Ergebnis (Fakultät): {BerechneFakultaet((int)zahl)}"
+                            : "Fehler: Fakultät nur für ganze, positive Zahlen!",
+
+                        _ => "Ungültige Auswahl."
+                    };
+
+                    Console.WriteLine(ausgabe);
+                }
+                else
+                {
+                    Console.WriteLine("Fehler: Das war keine gültige Zahl!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Fehler: Du hast eine ungültige Operation gewählt.");
+            }
+        }
+
+        static long BerechneFakultaet(int n)
+        {
+            if (n == 0 || n == 1) return 1;
+
+            long ergebnis = 1;
+            for (int i = 2; i <= n; i++)
+            {
+                ergebnis *= i;
+            }
+            return ergebnis;
+        }
+
+
+
+
     }
 }
