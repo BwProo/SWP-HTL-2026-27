@@ -22,12 +22,17 @@ namespace FirstOOP
         }
 
         // Constructor for the Kuh class
-        public Kuh(string name, string colour) // impliziert Rückgabewert ist ein Objekt der Klasse Kuh
+        public Kuh(string? name, string colour)
         {
+            // HIER FEHLTE DIE PRÜFUNG:
+            // Wenn der Name null oder leer ("") ist, werfen wir die erwartete Exception!
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new InvalidDataException("Der Name darf nicht leer oder null sein!");
+            }
+
             _name = name;
             _colour = colour;
         }
-
-
     }
 }
