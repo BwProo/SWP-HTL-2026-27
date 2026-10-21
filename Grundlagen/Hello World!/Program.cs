@@ -1,6 +1,6 @@
-﻿bool programmLäuft = true;
+﻿bool programmLeuft = true;
 
-while (programmLäuft)
+while (programmLeuft)
 {
     Console.Clear();
     Console.WriteLine("=================================");
@@ -35,7 +35,7 @@ while (programmLäuft)
             MathematischeOperationen();
             break;
         case "0":
-            programmLäuft = false;
+            programmLeuft = false;
             Console.WriteLine("Programm wird beendet. Auf Wiedersehen!");
             break;
         default:
@@ -43,7 +43,7 @@ while (programmLäuft)
             break;
     }
 
-    if (programmLäuft)
+    if (programmLeuft)
     {
         Console.WriteLine("\nDrücke eine beliebige Taste, um ins Menü zurückzukehren...");
         Console.ReadKey();
@@ -146,7 +146,7 @@ static void MathematischeOperationen()
                     ? $"Ergebnis (Wurzel): {Math.Sqrt(zahl)}"
                     : "Fehler: Keine Wurzel aus negativen Zahlen möglich!",
                 "3" => (zahl >= 0 && zahl == Math.Floor(zahl))
-                    ? $"Ergebnis (Fakultät): {BerechneFakultaet((int)zahl)}"
+                    ? $"Ergebnis (Fakultät): {BerechneFakultaetMitRechenweg((int)zahl)}"
                     : "Fehler: Fakultät nur für ganze, positive Zahlen!",
                 _ => "Ungültige Auswahl."
             };
@@ -164,14 +164,18 @@ static void MathematischeOperationen()
     }
 }
 
-static long BerechneFakultaet(int n)
+static string BerechneFakultaetMitRechenweg(int n)
 {
-    if (n == 0 || n == 1) return 1;
+    if (n == 0 || n == 1) return "1 = 1";
 
     long ergebnis = 1;
+    string rechenweg = "1";
+
     for (int i = 2; i <= n; i++)
     {
         ergebnis *= i;
+        rechenweg += $" * {i}"; // Hängt die nächste Zahl an den Text an
     }
-    return ergebnis;
+
+    return $"{rechenweg} = {ergebnis}";
 }
