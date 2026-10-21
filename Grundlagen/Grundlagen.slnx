@@ -2,4 +2,5 @@
   <Project Path="FirstOOP/FirstOOP.csproj" Id="8f755ac4-2372-4c55-9048-94156617bf95" />
   <Project Path="Hello World!/Hello World!.csproj" />
   <Project Path="KuhTestProjekt/KuhTestProjekt.csproj" Id="a063f016-1cf3-41e1-94d7-df673cab49b2" />
+  <Project Path="vorbereitungSMUE/vorbereitungSMUE.csproj" Id="9968438b-2fde-4c00-ac9e-861b023f0fa8" />
 </Solution>
