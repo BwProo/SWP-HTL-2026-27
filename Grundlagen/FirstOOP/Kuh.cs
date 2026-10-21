@@ -24,7 +24,6 @@ namespace FirstOOP
         // Constructor for the Kuh class
         public Kuh(string? name, string colour)
         {
-            // HIER FEHLTE DIE PRÜFUNG:
             // Wenn der Name null oder leer ("") ist, werfen wir die erwartete Exception!
             if (string.IsNullOrEmpty(name))
             {
